@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// 用户注册
+Route::namespace('Api')->group(function ($api) {
+    $api->post('users', 'UsersController@store')->name('api.users.store');
+});
