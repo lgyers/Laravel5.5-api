@@ -45,6 +45,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'lgyer';
         $user->email = '330395508@qq.com';
+        $user->mobile = '18518487115';
         $user->password = bcrypt('123123');
         $user->avatar = 'https://cdn.itjuzi.com/images/85f63bf9bc34c0a7bfd3b4e2245f9880.jpg?imageView2/0/w/100/q/100';
         $user->save();
