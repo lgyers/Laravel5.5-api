@@ -32,6 +32,8 @@ Route::namespace('Api')->group(function ($api) {
     $api->group(['middleware' => 'api.jwt.auth'], function($api) {
         // 当前登录用户信息
         $api->get('user', 'UsersController@me')->name('api.user.show');
+        // 编辑登录用户信息
+        $api->post('user', 'UsersController@update')->name('api.user.update');
     });
 
 });

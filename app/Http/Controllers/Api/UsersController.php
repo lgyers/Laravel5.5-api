@@ -39,4 +39,21 @@ class UsersController extends ApiController
     {
         return $this->success(new UserResource(\Auth::guard('api')->user()));
     }
+
+    public function update(UserRequest $request)
+    {
+        $user = \Auth::guard('api')->user();
+
+        $attributes = $request->only(['name', 'email']);
+
+        // if ($request->avatar_image_id) {
+        //     $image = Image::find($request->avatar_image_id);
+
+        //     $attributes['avatar'] = $image->path;
+        // }
+        $user->update($attributes);
+
+        return $this->success(new UserResource($user));
+    }
+
 }
