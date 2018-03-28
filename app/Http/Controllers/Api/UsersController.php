@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\UserRequest;
+use App\Http\Resources\User as UserResource;
+
 
 class UsersController extends ApiController
 {
@@ -31,5 +33,10 @@ class UsersController extends ApiController
         // \Cache::forget($request->verification_key);
 
         return $this->created('创建成功');
+    }
+
+    public function me()
+    {
+        return $this->success(new UserResource(\Auth::guard('api')->user()));
     }
 }
