@@ -41,6 +41,8 @@ Route::namespace('Api')->group(function ($api) {
         $api->get('user/permissions', 'PermissionsController@index')->name('api.user.permissions.index');
         // 发布话题
         $api->post('topics', 'TopicsController@store')->name('api.topics.store');
+        // 修改话题
+        $api->patch('topics/{topic}', 'TopicsController@update')->name('api.topics.update');
 
 
     });

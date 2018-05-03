@@ -15,6 +15,14 @@ class TopicsController extends ApiController
         $topic->user_id = \Auth::guard('api')->user()->id;
         $topic->save();
 
-        return new TopicResource($topic);
+        return $this->created(new TopicResource($topic));
+    }
+
+    public function update(TopicRequest $request, Topic $topic)
+    {
+    	$this->authorize('update', $topic);
+
+	    $topic->update($request->all());
+	    return $this->success(new TopicResource($topic));
     }
 }
