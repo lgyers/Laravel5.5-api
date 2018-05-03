@@ -12,9 +12,9 @@ class TopicsController extends ApiController
     public function store(TopicRequest $request, Topic $topic)
     {
         $topic->fill($request->all());
-        $topic->user_id = $this->user()->id;
+        $topic->user_id = \Auth::guard('api')->user()->id;
         $topic->save();
 
-        $this->created(new TopicResource($topic));
+        return new TopicResource($topic);
     }
 }
