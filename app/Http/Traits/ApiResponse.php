@@ -126,7 +126,7 @@ trait ApiResponse
      * @param string $message
      * @return mixed
      */
-    public function notFond($message = 'Not Fond!')
+    public function notFound($message = 'Not Fond!')
     {
         return $this->failed($message,Foundationresponse::HTTP_NOT_FOUND);
     }

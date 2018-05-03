@@ -34,7 +34,7 @@ class AuthorizationsController extends ApiController
     public function destroy()
     {
         Auth::guard('api')->logout();
-        return $this->notFond();
+        return $this->notFound();
     }
 
 
