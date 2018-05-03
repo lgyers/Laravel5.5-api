@@ -100,11 +100,16 @@ trait ApiResponse
      * @param string $message
      * @return mixed
      */
-    public function created($message = "created")
-    {
-        return $this->setStatusCode(FoundationResponse::HTTP_CREATED)
-            ->message($message);
+    // public function created($message = "created")
+    // {
+    //     return $this->setStatusCode(FoundationResponse::HTTP_CREATED)
+    //         ->message($message);
 
+    // }
+
+    public function created($data, $message = "created")
+    {
+        return $this->status($message, compact('data'), FoundationResponse::HTTP_CREATED);
     }
 
     /**

@@ -37,9 +37,10 @@ Route::namespace('Api')->group(function ($api) {
         $api->get('user', 'UsersController@me')->name('api.user.show');
         // 编辑登录用户信息
         $api->post('user', 'UsersController@update')->name('api.user.update');
-
         // 当前登录用户权限
         $api->get('user/permissions', 'PermissionsController@index')->name('api.user.permissions.index');
+        // 发布话题
+        $api->post('topics', 'TopicsController@store')->name('api.topics.store');
 
 
     });
