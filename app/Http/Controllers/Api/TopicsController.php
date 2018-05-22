@@ -25,4 +25,12 @@ class TopicsController extends ApiController
 	    $topic->update($request->all());
 	    return $this->success(new TopicResource($topic));
     }
+
+    public function destroy(Topic $topic)
+    {
+        $this->authorize('update', $topic);
+
+        $topic->delete();
+        return $this->message('删除成功');
+    }
 }
