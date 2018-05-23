@@ -55,4 +55,15 @@ class TopicsController extends ApiController
 
         return $this->success(new TopicResource($topics));
     }
+
+    public function show(Topic $topic)
+    {
+        return $this->success(new TopicResource($topic));
+    }
+
+
+
+
+
+
 }

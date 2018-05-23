@@ -30,7 +30,10 @@ Route::namespace('Api')->group(function ($api) {
     
     // 游客可以访问的接口
     $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
+    //话题列表页
     $api->get('topics', 'TopicsController@index')->name('api.topics.index');
+    //话题详情页
+    $api->get('topics/{topic}', 'TopicsController@show')->name('api.topics.show');
     
     // 需要 token 验证的接口
     $api->group(['middleware' => 'api.jwt.auth'], function($api) {
