@@ -49,6 +49,8 @@ Route::namespace('Api')->group(function ($api) {
         $api->patch('topics/{topic}', 'TopicsController@update')->name('api.topics.update');
         // 删除
         $api->delete('topics/{topic}', 'TopicsController@destroy')->name('api.topics.delete');
+        // 发布回复
+        $api->post('topics/{topic}/replies', 'RepliesController@store')->name('api.topics.replies.store');
 
 
     });
