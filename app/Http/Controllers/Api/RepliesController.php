@@ -18,4 +18,23 @@ class RepliesController extends ApiController
 
     	return $this->success(new ReplyRresource($reply));
     }
+
+    public function destory(Topic $topic, Reply $reply)
+    {
+    	if ($reply->topic_id != $topic->id) {
+            return $this->failed('BadRequest');
+        }
+
+        $this->authorize('destroy', $reply);
+        $reply->delete();
+
+        return $this->notFound();
+    }
+
+    public function index(Topic $topic)
+    {
+    	$replies = $topic->replies()->paginate(20);
+
+    	return $this->success(new ReplyRresource($replies));
+    }
 }

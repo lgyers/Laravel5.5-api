@@ -34,6 +34,8 @@ Route::namespace('Api')->group(function ($api) {
     $api->get('topics', 'TopicsController@index')->name('api.topics.index');
     //话题详情页
     $api->get('topics/{topic}', 'TopicsController@show')->name('api.topics.show');
+    // 话题回复列表
+    $api->get('topics/{topic}/replies', 'RepliesController@index')->name('api.topics.replies.index');
     
     // 需要 token 验证的接口
     $api->group(['middleware' => 'api.jwt.auth'], function($api) {
@@ -51,6 +53,8 @@ Route::namespace('Api')->group(function ($api) {
         $api->delete('topics/{topic}', 'TopicsController@destroy')->name('api.topics.delete');
         // 发布回复
         $api->post('topics/{topic}/replies', 'RepliesController@store')->name('api.topics.replies.store');
+        // 删除回复
+        $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')->name('api.topics.replies.destroy');
 
 
     });
