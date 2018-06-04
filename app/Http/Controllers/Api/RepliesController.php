@@ -19,7 +19,7 @@ class RepliesController extends ApiController
     	return $this->success(new ReplyRresource($reply));
     }
 
-    public function destory(Topic $topic, Reply $reply)
+    public function destroy(Topic $topic, Reply $reply)
     {
     	if ($reply->topic_id != $topic->id) {
             return $this->failed('BadRequest');
@@ -28,7 +28,7 @@ class RepliesController extends ApiController
         $this->authorize('destroy', $reply);
         $reply->delete();
 
-        return $this->notFound();
+        return $this->status('删除成功', [], 204);
     }
 
     public function index(Topic $topic)
