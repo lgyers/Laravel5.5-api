@@ -38,6 +38,8 @@ Route::namespace('Api')->group(function ($api) {
     $api->get('topics/{topic}/replies', 'RepliesController@index')->name('api.topics.replies.index');
     // 删除回复
     $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')->name('api.topics.replies.destroy');
+    // 通知列表
+    $api->get('user/notifications', 'NotificationsController@index')->name('api.user.notifications.index');
     
     // 需要 token 验证的接口
     $api->group(['middleware' => 'api.jwt.auth'], function($api) {
